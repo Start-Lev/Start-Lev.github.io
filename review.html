@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+        }
+
+        h1 {
+            margin: auto 0 auto 15px;
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .header-nav {
+            background-color: #2c3e50;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .burger-menu div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background-color: #2c3e50;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .burger-menu {
+                display: flex;
+            }
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            margin: auto 0;
+        }
+
+        .reviews-container {
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .review {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .review:last-child {
+            border-bottom: none;
+        }
+
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .review-form input, .review-form textarea, .review-form button {
+            margin-top: 10px;
+            padding: 8px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-nav">
+        <div class="nav-container">
+            <div class="title">
+                <img class="logo" src="image.svg">
+                <h1>Отзывы</h1>
+            </div>
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="nav-links">
+                <a href="about.html">О нас</a>
+                <a href="contact.html">Контакты</a>
+                <a href="favorites.html">Избранное</a>
+                <a href="cart.html">Корзина</a>
+                <a href="index.html">Главная</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="reviews-container">
+        <h2>Отзывы</h2>
+        <div id="reviews-list">
+            <div class="review"><strong>Анна</strong><p>Отличный магазин! Быстрая доставка и качественные товары.</p></div>
+            <div class="review"><strong>Иван</strong><p>Очень доволен покупкой. Буду заказывать ещё!</p></div>
+            <div class="review"><strong>Мария</strong><p>Хороший сервис и вежливые консультанты. Рекомендую.</p></div>
+        </div>
+        <div class="review-form">
+            <h3>Оставить отзыв</h3>
+            <input type="text" id="username" placeholder="Ваше имя">
+            <textarea id="reviewText" placeholder="Ваш отзыв"></textarea>
+            <button onclick="addReview()">Добавить отзыв</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+        function loadReviews() {
+            const storedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            const reviewList = document.getElementById('reviews-list');
+            storedReviews.forEach(review => {
+                const reviewDiv = document.createElement('div');
+                reviewDiv.classList.add('review');
+                reviewDiv.innerHTML = `<strong>${review.username}</strong><p>${review.text}</p>`;
+                reviewList.appendChild(reviewDiv);
+            });
+        }
+
+        function addReview() {
+            const username = document.getElementById('username').value;
+            const reviewText = document.getElementById('reviewText').value;
+            
+            if (username && reviewText) {
+                const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                const newReview = { username, text: reviewText };
+                reviews.push(newReview);
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+                
+                const reviewList = document.getElementById('reviews-list');
+                const reviewDiv = document.createElement('div');
+                reviewDiv.classList.add('review');
+                reviewDiv.innerHTML = `<strong>${username}</strong><p>${reviewText}</p>`;
+                reviewList.appendChild(reviewDiv);
+                
+                document.getElementById('username').value = '';
+                document.getElementById('reviewText').value = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadReviews);
+    </script>
+</body>
+
+</html>

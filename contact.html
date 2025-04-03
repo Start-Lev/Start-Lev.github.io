@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+        }
+
+        h1 {
+            margin: auto 0 auto 15px;
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .header-nav {
+            background-color: #2c3e50;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .burger-menu div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background-color: #2c3e50;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .burger-menu {
+                display: flex;
+            }
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            margin: auto 0;
+        }
+
+        /* Стили для раздела контактов разработчиков */
+        .developers-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .developers-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 1.8em;
+        }
+
+        .developers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .developer-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .developer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .developer-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .developer-card h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-size: 1.2em;
+        }
+
+        .developer-card p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .developer-card .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .developer-card .social-links a {
+            color: #3498db;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        .developer-card .social-links a:hover {
+            color: #2980b9;
+        }
+        #map {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="header-nav">
+            <div class="nav-container">
+                <div class="title">
+                    <img class="logo" src="image.svg">
+                    <h1>Контакты</h1>
+                </div>
+                <div class="burger-menu" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="nav-links">
+                    <a href="about.html">О нас</a>
+                    <a href="review.html">Отзывы</a>
+                    <a href="favorites.html">Избранное</a>
+                    <a href="cart.html">Корзина</a>
+                    <a href="index.html">Главная</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="developers-section">
+                <h2>Наша команда разработчиков</h2>
+                <div class="developers-grid">
+                    <div class="developer-card">
+                        <h3>Возиян Дамиан</h3>
+                        <p>Дизайн</p>
+                        <p>Email: Damian@example.com</p>
+                        <div class="social-links">
+                            <a href="https://github.com/ivan" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/ivan" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="developer-card">
+                        <h3>Вострова Арина</h3>
+                        <p>вёрстка</p>
+                        <p>Email: Arina@example.com</p>
+                        <div class="social-links">
+                            <a href="https://github.com/maria" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/maria" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="developer-card">
+                        <h3>Гурьянов Пётр</h3>
+                        <p>вёрстка</p>
+                        <p>Email: Petr@example.com</p>
+                        <div class="social-links">
+                            <a href="https://github.com/alex" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/alex" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="developer-card">
+                        <h3>Ногойбаева Медина</h3>
+                        <p>вёрстка</p>
+                        <p>Email: Medina@example.com</p>
+                        <div class="social-links">
+                            <a href="https://github.com/ivan" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/ivan" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="developer-card">                 
+                        <h3>Слепцов Илья</h3>
+                        <p>координатор, вёрстка</p>
+                        <p>Email: Ilia@example.com</p>
+                        <div class="social-links">
+                            <a href="https://github.com/maria" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/maria" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="developer-card">                    
+                        <h3>Слепцов Лев</h3>
+                        <p>координатор, вёрстка</p>
+                        <p>Email: Lev@example.com</p>
+                        <div class="social-links">
+                            <a href="https://github.com/maria" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/maria" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="developer-card">
+                        
+                        <h3>Фёдоров Егор</h3>
+                        <p>вёрстка</p>
+                        <p>Email: Egor@example.com</p>
+                        <div class="social-links">
+                            <a href="https://github.com/alex" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/alex" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="map"></div>
+        
+            <script src="https://api-maps.yandex.ru/2.1/?apikey=ВАШ_API_КЛЮЧ&lang=ru_RU" type="text/javascript"></script>
+            <script>
+                // Инициализация карты
+                ymaps.ready(init);
+                function toggleMenu() {
+                    document.querySelector('.nav-links').classList.toggle('active');
+                }
+                function init() {
+                    // Создаем карту с центром в нужной точке
+                    const map = new ymaps.Map("map", {
+                        center: [55.848347, 37.505472], // Координаты центра карты (Москва)
+                        zoom: 12 // Масштаб карты
+                    });
+        
+                    // Добавляем метку на карту
+                    const placemark = new ymaps.Placemark([55.848347, 37.505472], {
+                        hintContent: 'Наш офис', // Подсказка при наведении
+                        balloonContent: 'Мы находимся здесь!' // Текст в балуне
+                    });
+        
+                    // Добавляем метку на карту
+                    map.geoObjects.add(placemark);
+                }
+            </script>
+        </div>
+
+        <footer>
+            <p>© 2025 MAGA. Все права защищены.</p>
+            <p>Свяжитесь с нами: 8(999)999-99-99</p>
+        </footer>
+    </div>
+</body>
+
+</html>

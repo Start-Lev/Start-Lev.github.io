@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        footer p {
+            color: #fff;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+        }
+
+        h1 {
+            margin: auto 0 auto 15px;
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .about {
+            max-width: 800px;
+            /* Максимальная ширина контейнера */
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            /* Центрирование текста внутри контейнера */
+            color: #2c3e50;
+        }
+
+        .header-nav {
+            background-color: #2c3e50;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .burger-menu div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background-color: #2c3e50;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .burger-menu {
+                display: flex;
+            }
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            margin: auto 0;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin: 0 auto 10px;
+            display: block;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #2c3e50;
+        }
+
+        p {
+            color: #2c3e50;
+            font-size: 0.9em;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 160px);
+            /* Высота экрана минус высота header и footer */
+        }
+    </Style>
+
+<body>
+    <div class="page-wrapper">
+        <div class="header-nav">
+            <div class="nav-container">
+                <div class="title">
+                    <img class="logo" src="image.svg">
+                    <h1>О нас</h1>
+                </div>
+                <div class="burger-menu" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="nav-links">
+                    <a href="contact.html">Контакты</a>
+                    <a href="review.html">Отзывы</a>
+                    <a href="favorites.html">Избранное</a>
+                    <a href="cart.html">Корзина</a>
+                    <a href="index.html">Главная</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <main>
+        <section class="about">
+            <h2>О нас</h2>
+            <p>Добро пожаловать в Maga - ваш надежный источник уникальных и стильных вещей!</p>
+            <p>Наша миссия - предоставить вам качественные товары, которые подчеркнут вашу индивидуальность
+                и стиль. Мы
+                верим, что каждый заслуживает иметь в своем гардеробе нечто особенное.</p>
+            <p>С момента нашего основания в 2025, мы стремимся к совершенству, предлагая только
+                лучшие
+                продукты и услуги. Наша команда состоит из профессионалов, которые с энтузиазмом работают
+                над тем, чтобы
+                сделать ваш шопинг максимально приятным.</p>
+            <p>Мы также заботимся о нашей планете и стараемся использовать экологически чистые материалы и
+                упаковку.</p>
+            <p>Спасибо, что выбираете Maga. Мы рады быть частью вашего стиля!</p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 MAGA. Все права защищены.</p>
+        <p>Свяжитесь с нами: 8(999)999-99-99</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
